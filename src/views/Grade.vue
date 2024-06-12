@@ -25,6 +25,9 @@ export default {
           icon: "error",
           title: "ผิดพลาด",
           text: "กรุณากรอกตัวเลขเท่านั้น",
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true
         });
       } else if (this.grade > 100 || this.grade < 0) {
         this.result = "กรุณากรอกคะแนนระหว่าง 0-100";
@@ -32,6 +35,9 @@ export default {
           icon: "error",
           title: "ผิดพลาด",
           text: "กรุณากรอกคะแนนระหว่าง 0-100",
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true
         });
       } else {
         this.grade >= 80

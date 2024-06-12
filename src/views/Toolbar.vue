@@ -1,17 +1,29 @@
 <template>
   <div>
-    <v-app-bar app dark>
-  
+    <v-app-bar app>
+      <v-toolbar-title>.........</v-toolbar-title>
+
       <v-spacer></v-spacer>
 
-      <v-btn 
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">ออกจากระบบ</span>
-        <v-icon>mdi-logout</v-icon>
-      </v-btn>
+      <v-menu offset-y>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn color="primary" dark v-bind="attrs" v-on="on">
+            {{Username}}
+            <v-icon right>mdi-menu-down</v-icon>
+          </v-btn>
+        </template>
+        <v-list>
+          <v-list-item>
+            <v-list-item-title>Logout</v-list-item-title>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-title>Option 2</v-list-item-title>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-title>Option 3</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
     </v-app-bar>
 
     <v-main>
@@ -22,6 +34,14 @@
 
 <script>
 export default {
+    data(){
+      return{
+        Username: ''
+      }
+    },
+    created(){
+      this.Username = localStorage.getItem("user");
+    }
 };
 </script>
 

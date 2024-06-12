@@ -36,6 +36,16 @@ const routes = [
         name: "simple",
         component: () => import("../views/Simple.vue"),
       },
+      {
+        path: "/grade",
+        name: "grade",
+        component: () => import("../views/Grade.vue"),
+      },
+      {
+        path: "/apicon",
+        name: "apicon",
+        component: () => import("../views/apicon.vue"),
+      },
     ],
   },
 ];

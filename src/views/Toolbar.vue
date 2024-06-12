@@ -21,7 +21,41 @@
 </template>
 
 <script>
-export default {};
+import { mapState, mapMutations } from "vuex";
+export default {
+  name: "Header",
+
+  components: {},
+
+  props: {
+    value: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  data: () => ({
+    userprofile: [
+      { title: "My Profile" },
+      { title: "My Balance" },
+      { title: "Inbox" },
+      { title: "Account Setting" },
+      { title: "Logout" },
+    ],
+    href() {
+      return undefined;
+    },
+  }),
+
+  computed: {
+    ...mapState(["Sidebar_drawer"]),
+  },
+
+  methods: {
+    ...mapMutations({
+      setSidebarDrawer: "SET_SIDEBAR_DRAWER",
+    }),
+  },
+};
 </script>
 
 <style>

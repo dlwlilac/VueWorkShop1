@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
+// import { component } from "vue/types/umd";
 
 Vue.use(VueRouter);
 
@@ -29,6 +30,11 @@ const routes = [
         path: "/profile",
         name: "profile",
         component: () => import("../views/profile.vue"),
+      },
+      {
+        path: "/simple",
+        name: "simple",
+        component: () => import("../views/Simple.vue"),
       },
     ],
   },

@@ -11,7 +11,7 @@
               <v-img width="300" :src="item.urlImg"></v-img>
               <v-card-title align="left" primary-title>
                 {{ item.productName }}
-                <v-card-subtitle>{{ item.detail }} <br> ราคา: {{item.price}} </v-card-subtitle>
+                <v-card-subtitle>{{ item.detail }} <br> ราคา: {{item.price}} <br> คงเหลือ: {{item.stock}} </v-card-subtitle>
               </v-card-title>
               <v-card-actions>
                 <v-spacer></v-spacer>

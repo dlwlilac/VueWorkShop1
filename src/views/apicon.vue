@@ -1,6 +1,6 @@
 <template>
-  <v-container fluid>
-    <div justify="center" align="center">
+  <div class="outer-container">
+    <div justify="center" align="center" class="container">
       <h1 class="title-text">รายการสินค้าทั้งหมด</h1>
       <div class="d-flex justify-end mr-10">
         <v-btn color="success" @click="newProduct()">เพิ่มสินค้า</v-btn>
@@ -10,29 +10,38 @@
       <v-row justify="center" align="center">
         <div v-for="(item, index) in apiData" :key="index">
           <v-col cols="12">
-            <v-card width="350">
-              <v-img width="350" :src="item.urlImg"></v-img>
-              <v-card-title align="left" primary-title>
-                {{ item.productName }}
-                <v-card-subtitle>
-                  <b>รายละเอียด:</b> {{ item.detail }} <br />
-                  <b>ราคา:</b> {{ item.price }} <br />
-                  <b>คงเหลือ:</b> {{ item.stock }}
-                </v-card-subtitle>
-              </v-card-title>
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn color="info" @click="EditProduct(item)">edit</v-btn>
-                <v-btn color="red" @click="deleteProducts(item)"
-                  ><v-icon right>mdi-delete</v-icon>delete</v-btn
-                >
-              </v-card-actions>
+            <v-card width="600" class="product-card">
+              <v-row align="center" justify="center">
+                <v-col cols="4" class="d-flex align-center justify-center">
+                  <v-img width="300" :src="item.urlImg"></v-img>
+                </v-col>
+                <v-col cols="8" class="d-flex flex-column">
+                  <v-card-title align="left" primary-title>
+                    {{ item.productName }}
+                    <v-card-subtitle>
+                      <b>รายละเอียด:</b> {{ item.detail }} <br />
+                      <b>ประเภท:</b> {{ item.type }} <br />
+                      <b>ราคา:</b> {{ item.price }} $ <br />
+                      <b>คงเหลือ:</b> {{ item.stock }}
+                    </v-card-subtitle>
+                  </v-card-title>
+                  <v-card-actions class="d-flex justify-end">
+                    <v-spacer></v-spacer>
+                    <v-btn class="btn info" @click="EditProduct(item)"
+                      >แก้ไข</v-btn
+                    >
+                    <v-btn class="btn error" @click="deleteProducts(item)">
+                      <v-icon right>mdi-delete</v-icon>ลบสินค้า
+                    </v-btn>
+                  </v-card-actions>
+                </v-col>
+              </v-row>
             </v-card>
           </v-col>
         </div>
       </v-row>
       <br /><br />
-      <v-dialog v-model="dialogEdit" max-width="500px">
+      <v-dialog v-model="dialogEdit" max-width="750">
         <v-card>
           <v-card-title primary-title>{{ savemode }}</v-card-title>
           <v-card-text>
@@ -42,15 +51,8 @@
                   name="productName"
                   label="ชื่อสินค้า"
                   id="productName"
+                  outlined
                   v-model="postdata.productName"
-                ></v-text-field>
-              </v-col>
-              <v-col cols="6">
-                <v-text-field
-                  name="detail"
-                  label="รายละเอียด"
-                  id="detail"
-                  v-model="postdata.detail"
                 ></v-text-field>
               </v-col>
               <v-col cols="6">
@@ -58,14 +60,26 @@
                   name="type"
                   label="ประเภท"
                   id="type"
+                  outlined
                   v-model="postdata.type"
                 ></v-text-field>
+              </v-col>
+              <v-col cols="12">
+                <v-textarea
+                  name="detail"
+                  label="รายละเอียด"
+                  id="detail"
+                  outlined
+                  rows="2"
+                  v-model="postdata.detail"
+                ></v-textarea>
               </v-col>
               <v-col cols="6">
                 <v-text-field
                   name="price"
                   label="ราคา"
                   id="price"
+                  outlined
                   v-model="postdata.price"
                 ></v-text-field>
               </v-col>
@@ -74,30 +88,33 @@
                   name="stock"
                   label="คงเหลือ"
                   id="stock"
+                  outlined
                   v-model="postdata.stock"
                 ></v-text-field>
               </v-col>
-              <v-col cols="6">
-                <v-text-field
+              <v-col cols="12">
+                <v-textarea
                   name="urlImg"
                   label="urlImg"
                   id="urlImg"
+                  outlined
+                  rows="2"
                   v-model="postdata.urlImg"
-                ></v-text-field>
+                ></v-textarea>
               </v-col>
             </v-row>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="error" @click="closeAddProduct()">Cancel</v-btn>
+            <v-btn color="error" @click="closeAddProduct()">ยกเลิก</v-btn>
             <v-btn color="primary" @click="saveDataProducts(postdata)"
-              >save</v-btn
+              >บันทึก</v-btn
             >
           </v-card-actions>
         </v-card>
       </v-dialog>
     </div>
-  </v-container>
+  </div>
 </template>
 
 <script>
@@ -254,7 +271,54 @@ export default {
 </script>
 
 <style>
+.outer-container {
+  display: flex;
+  justify-content: top;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+  flex-direction: column;
+}
+.container {
+  max-width: 1500px;
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
 .title-text {
   padding: 20px 20px 20px 20px;
+}
+.product-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  padding: 20px;
+  width: calc(33.333% - 40px);
+  box-sizing: border-box;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.btn {
+  background-color: #1d04ec;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 </style>

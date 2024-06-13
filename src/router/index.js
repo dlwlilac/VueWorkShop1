@@ -1,18 +1,18 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import HomeView from "../views/HomeView.vue";
+// import HomeView from "../views/HomeView.vue";
 // import { component } from "vue/types/umd";
 
 Vue.use(VueRouter);
 
 const routes = [
+  // {
+  //   path: "/",
+  //   name: "home",
+  //   component: HomeView,
+  // },
   {
     path: "/",
-    name: "home",
-    component: HomeView,
-  },
-  {
-    path: "",
     name: "toolbar",
     component: () => import("../views/Toolbar.vue"),
     children: [
@@ -46,6 +46,11 @@ const routes = [
         name: "apicon",
         component: () => import("../views/apicon.vue"),
       },
+      // {
+      //   path: "/login",
+      //   name: "login",
+      //   component: () => import("../views/login.vue"),
+      // },
     ],
   },
 ];

@@ -29,7 +29,6 @@
 </template>
 
 <script>
-import Swal from "sweetalert2";
 import simcom from "../components/SimCom.vue";
 import { EventBus } from "@/EventBus";
 
@@ -59,7 +58,7 @@ export default {
   },
   methods: {
     callAlert() {
-      Swal.fire({
+      this.$swal.fire({
         title: "HELLO!",
         text: "test",
         icon: "question",
@@ -67,7 +66,7 @@ export default {
     },
     callAlertParam(item) {
       // alert(item);
-      Swal.fire({
+      this.$swal.fire({
         title: item,
         text: item,
         icon: "info",
@@ -75,7 +74,7 @@ export default {
     },
     setLocal(item) {
       localStorage.setItem("user", item);
-       Swal.fire({
+       this.$swal.fire({
         title: "Set user complete",
         icon: "success",
       });

@@ -5,7 +5,10 @@
         <v-card-title class="text-gradient"> WorkShop คำนวณเกรด </v-card-title>
         <v-card-text>
           <v-form @submit.prevent="calGrade">
-            <v-text-field v-model="grade" label="กรอกคะแนนของคุณ"></v-text-field>
+            <v-text-field
+              v-model="grade"
+              label="กรอกคะแนนของคุณ"
+            ></v-text-field>
             <v-btn color="success" @click="calGrade()">คำนวณ</v-btn>
           </v-form>
         </v-card-text>
@@ -15,44 +18,49 @@
 </template>
 
 <script>
-import Swal from "sweetalert2";
 export default {
   methods: {
     calGrade() {
       if (isNaN(this.grade) || this.grade === "") {
         this.result = "กรุณากรอกตัวเลขเท่านั้น";
-        Swal.fire({
+        this.$swal.fire({
           icon: "error",
           title: "ผิดพลาด",
           text: "กรุณากรอกตัวเลขเท่านั้น",
           showConfirmButton: false,
           timer: 1500,
-          timerProgressBar: true
+          timerProgressBar: true,
+          didOpen: () => {
+            this.$swal.showLoading();
+          },
         });
       } else if (this.grade > 100 || this.grade < 0) {
         this.result = "กรุณากรอกคะแนนระหว่าง 0-100";
-        Swal.fire({
+        this.$swal.fire({
           icon: "error",
           title: "ผิดพลาด",
           text: "กรุณากรอกคะแนนระหว่าง 0-100",
           showConfirmButton: false,
           timer: 1500,
-          timerProgressBar: true
+          timerProgressBar: true,
+          didOpen: () => {
+            this.$swal.showLoading();
+          },
         });
       } else {
         this.grade >= 80
-          ? (this.result = "คุณได้เกรด A")
+          ? (this.result = " คุณได้เกรด A")
           : this.grade >= 70
-          ? (this.result = "คุณได้เกรด B")
+          ? (this.result = " คุณได้เกรด B")
           : this.grade >= 60
-          ? (this.result = "คุณได้เกรด C")
+          ? (this.result = " คุณได้เกรด C")
           : this.grade >= 50
-          ? (this.result = "คุณได้เกรด D")
-          : (this.result = "คุณได้เกรด F");
-        Swal.fire({
+          ? (this.result = " คุณได้เกรด D")
+          : (this.result = " คุณได้เกรด F");
+        this.$swal.fire({
           icon: "success",
           title: "ผลการคำนวณเกรด",
-          text: this.result,
+          text: "คะแนน "+ this.grade + this.result,
         });
       }
     },

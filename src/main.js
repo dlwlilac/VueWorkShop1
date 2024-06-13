@@ -6,6 +6,9 @@ import store from './store'
 import vuetify from './plugins/vuetify'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import Swal from "sweetalert2";
+
+Vue.prototype.$swal = Swal
 
 Vue.use(VueAxios, axios)
 

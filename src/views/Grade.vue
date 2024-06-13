@@ -5,7 +5,7 @@
         <v-card-title class="text-gradient"> WorkShop คำนวณเกรด </v-card-title>
         <v-card-text>
           <v-form @submit.prevent="calGrade">
-            <v-text-field v-model="grade" label="Your Score"></v-text-field>
+            <v-text-field v-model="grade" label="กรอกคะแนนของคุณ"></v-text-field>
             <v-btn color="success" @click="calGrade()">คำนวณ</v-btn>
           </v-form>
         </v-card-text>

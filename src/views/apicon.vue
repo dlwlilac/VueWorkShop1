@@ -119,6 +119,7 @@
 
 <script>
 export default {
+  components: {},
   data() {
     return {
       dialogEdit: false,
@@ -179,6 +180,14 @@ export default {
         .then((res) => {
           console.log(res.data);
           this.apiData = res.data.data;
+        })
+        .catch(() => {
+          // console.error("Error fetching data:", error);
+           this.$swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Server ยังไม่เปิดใช้งานไม่สามารถเข้าถึงข้อมูลได้",
+          });
         });
     },
     async addProduct() {

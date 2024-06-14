@@ -1,13 +1,13 @@
 <template>
   <div>
     <v-app-bar app flat color="white">
-      <v-badge color="#D5F0DB" dot>
+      <!-- <v-badge color="#D5F0DB" dot>
         <v-img
           src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/9eb028de391e65072d06e77f06d0955f66b9fa2c-736x316.png?auto=format&fit=fill&q=80&w=300"
           contain
           width="100"
         ></v-img>
-      </v-badge>
+      </v-badge> -->
 
       <v-toolbar-title class="ml-4">
         <span class="green--text">YAHHHH</span>

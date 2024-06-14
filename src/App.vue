@@ -1,11 +1,10 @@
 <template>
-  <v-app >
-    <router-view />
-  </v-app>
+    <v-app>
+      <router-view />
+    </v-app>
 </template>
 
 <script>
-
 export default {
   name: "App",
 
@@ -21,4 +20,16 @@ export default {
 * {
   font-family: "Mali", sans-serif;
 }
+
+.backgroundImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url("../src/assets/img-headerbg.jpg");
+  background-size: cover;
+  flex-direction: column;
+}
+
+
 </style>

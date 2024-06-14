@@ -17,7 +17,7 @@
             <v-list-item-title>Logout</v-list-item-title>
           </v-list-item>
           <v-list-item>
-            <v-list-item-title>Option 2</v-list-item-title>
+            <v-list-item-title>ไม่มี</v-list-item-title>
           </v-list-item>
           <v-list-item>
             <v-list-item-title>Option 3</v-list-item-title>

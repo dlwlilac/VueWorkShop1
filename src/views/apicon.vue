@@ -1,7 +1,7 @@
 <template>
-  <div class="outer-container">
+  <div class="backgroundImage">
     <div justify="center" align="center" class="container">
-      <h1 class="title-text">รายการสินค้าทั้งหมด</h1>
+      <h1 class="title-text">จัดการสินค้า</h1>
       <div class="d-flex justify-end mr-10">
         <v-btn color="success" @click="newProduct()">เพิ่มสินค้า</v-btn>
       </div>
@@ -106,8 +106,8 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="error" @click="closeAddProduct()">ยกเลิก</v-btn>
-            <v-btn color="primary" @click="saveDataProducts(postdata)"
+            <v-btn color="error" class="btn" @click="closeAddProduct()">ยกเลิก</v-btn>
+            <v-btn color="primary" class="btn" @click="saveDataProducts(postdata)"
               >บันทึก</v-btn
             >
           </v-card-actions>
@@ -118,8 +118,12 @@
 </template>
 
 <script>
+// import Header from "../components/Header.vue";
+// import Navbar from "../components/Navbar";
 export default {
-  components: {},
+  components: {
+    // Header,
+  },
   data() {
     return {
       dialogEdit: false,
@@ -280,14 +284,7 @@ export default {
 </script>
 
 <style>
-.outer-container {
-  display: flex;
-  justify-content: top;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #f9f9f9;
-  flex-direction: column;
-}
+
 .container {
   max-width: 1500px;
   margin: 20px;
@@ -329,5 +326,9 @@ export default {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+.btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 </style>

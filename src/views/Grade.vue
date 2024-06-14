@@ -1,8 +1,8 @@
 <template>
-  <div class="container-xxl">
+  <div class="container-xxl backgroundGrade">
     <div class="d-flex justify-md-center grade-card">
       <v-card width="500">
-        <v-card-title class="text-gradient"> WorkShop คำนวณเกรด </v-card-title>
+        <v-card-title> WorkShop คำนวณเกรด </v-card-title>
         <v-card-text>
           <v-form @submit.prevent="calGrade">
             <v-text-field
@@ -71,5 +71,29 @@ export default {
 <style>
 .grade-card {
   padding: 20px 20px 20px 20px;
+}
+
+.product-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  padding: 20px;
+  width: calc(33.333% - 40px);
+  box-sizing: border-box;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.backgroundGrade {
+  display: flex;
+  justify-content: top;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url("../assets/img-headerbg.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  flex-direction: column;
 }
 </style>

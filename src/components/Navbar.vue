@@ -1,6 +1,6 @@
 <template>
-  <div class="navbar-expand-md navbar-light default">
-    <v-app-bar app color="white" flat>
+  <div>
+    <v-app-bar app flat color="white">
       <v-badge color="#D5F0DB" dot>
         <v-img
           src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/9eb028de391e65072d06e77f06d0955f66b9fa2c-736x316.png?auto=format&fit=fill&q=80&w=300"
@@ -10,8 +10,8 @@
       </v-badge>
 
       <v-toolbar-title class="ml-4">
-        <span class="green--text">YAHHHH</span
-        ><strong style="margin-left: 5px">Shop</strong>
+        <span class="green--text">YAHHHH</span>
+        <strong style="margin-left: 5px">SHOP</strong>
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
@@ -23,7 +23,7 @@
       <v-badge color="#41AB55" overlap content="3" class="mr-2 mt-1">
         <v-avatar color="#ECF7EE" size="40" @click="SoonCart()">
           <v-icon small class="btnNavbar" color="#41AB55"
-            >mdi-shopping-outline</v-icon
+            >mdi-cart-arrow-down</v-icon
           >
         </v-avatar>
       </v-badge>
@@ -31,8 +31,7 @@
         >สวัสดีคุณ,
         <strong style="margin-left: 5px; margin-right: 5px"
           >ผู้ใช้งาน</strong
-        ></span
-      >
+        ></span>
 
       <v-avatar size="50" class="ml-2" @click="menu = !menu">
         <v-img
@@ -86,8 +85,10 @@ export default {
 
 <style>
 :root {
+  --bs-body-bg: #f8f9fa;
   --bs-body-bg-rgb: 248, 249, 250;
-   --pc-header-background: rgba(var(--bs-body-bg-rgb), 0.7);
+  --bs-primary: #4680ff;
+  --pc-header-background: rgba(var(--bs-body-bg-rgb), 0.7);
 }
 .v-toolbar__title {
   font-size: 1rem !important;
@@ -98,29 +99,6 @@ export default {
 }
 .btnNavbar:hover {
   transform: translateY(-5px);
-}
-
-.navbar {
-  position: fixed;
-  padding: 16px 0;
-  width: 100%;
-  z-index: 1099;
-  top: 0;
-  -webkit-backdrop-filter: blur(7px);
-          backdrop-filter: blur(7px);
-  background-color: var(--pc-header-background);
-}
-.navbar.top-nav-collapse.default {
-  box-shadow: none;
-}
-.navbar.default, .navbar.top-nav-collapse {
-  box-shadow: 0 8px 6px -10px rgba(0, 0, 0, 0.5);
-}
-.navbar .nav-link {
-  font-weight: 500;
-}
-.navbar .nav-link:active, .navbar .nav-link:hover, .navbar .nav-link:focus {
-  color: var(--bs-primary);
 }
 
 </style>

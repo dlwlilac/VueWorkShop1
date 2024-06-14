@@ -1,7 +1,7 @@
 <template>
-    <v-app>
-      <router-view />
-    </v-app>
+  <v-app>
+    <router-view />
+  </v-app>
 </template>
 
 <script>
@@ -28,8 +28,8 @@ export default {
   min-height: 100vh;
   background-image: url("../src/assets/img-headerbg.jpg");
   background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
   flex-direction: column;
 }
-
-
 </style>

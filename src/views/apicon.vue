@@ -3,43 +3,83 @@
     <div justify="center" align="center" class="container">
       <h1 class="title-text">จัดการสินค้า</h1>
       <div class="d-flex justify-end mr-10">
-        <v-btn color="success" @click="newProduct()">เพิ่มสินค้า</v-btn>
+        <v-btn class="btn" @click="toggleView">{{
+          tableView ? "Table" : "Card"
+        }}</v-btn>
+        <v-btn class="btn info ml-3" @click="toggleShowFullText">
+          {{ showFullText ? "ยกเลิก" : "All Detail" }}
+        </v-btn>
+        <v-btn class="btn ml-3 success" @click="newProduct()"
+          >เพิ่มสินค้า</v-btn
+        >
       </div>
       <h4></h4>
       <br />
-      <v-row justify="center" align="center">
-        <div v-for="(item, index) in apiData" :key="index">
-          <v-col cols="12">
-            <v-card width="600" class="product-card">
-              <v-row align="center" justify="center">
-                <v-col cols="4" class="d-flex align-center justify-center">
-                  <v-img width="300" :src="item.urlImg"></v-img>
-                </v-col>
-                <v-col cols="8" class="d-flex flex-column">
-                  <v-card-title align="left" primary-title>
-                    {{ item.productName }}
-                    <v-card-subtitle>
-                      <b>รายละเอียด:</b> {{ item.detail }} <br />
-                      <b>ประเภท:</b> {{ item.type }} <br />
-                      <b>ราคา:</b> {{ item.price }} $ <br />
-                      <b>คงเหลือ:</b> {{ item.stock }}
-                    </v-card-subtitle>
-                  </v-card-title>
-                  <v-card-actions class="d-flex justify-end">
-                    <v-spacer></v-spacer>
-                    <v-btn class="btn info" @click="EditProduct(item)"
-                      >แก้ไข</v-btn
-                    >
-                    <v-btn class="btn error" @click="deleteProducts(item)">
-                      <v-icon right>mdi-delete</v-icon>ลบสินค้า
-                    </v-btn>
-                  </v-card-actions>
-                </v-col>
-              </v-row>
-            </v-card>
-          </v-col>
-        </div>
-      </v-row>
+      <!-- -->
+
+      <!-- ถ้า tableView เป็น true แสดงแบบ Table -->
+      <template v-if="tableView">
+        <v-data-table :headers="tableHeaders" :items="apiData">
+          <template v-slot:items="props">
+            <td>{{ props.item.productName }}</td>
+            <td>{{ props.item.detail }}</td>
+            <td>{{ props.item.type }}</td>
+            <td>{{ props.item.price }}</td>
+            <td>{{ props.item.stock }}</td>
+            <td>
+              <v-icon class="me-2" size="small" @click="editItem(props.item)">
+                mdi-pencil
+              </v-icon>
+              <v-icon size="small" @click="deleteItem(props.item)">
+                mdi-delete
+              </v-icon>
+            </td>
+          </template>
+        </v-data-table>
+      </template>
+
+      <!-- ถ้า tableView เป็น false แสดงแบบ Card -->
+      <template v-else>
+        <v-row justify="center" align="center">
+          <div v-for="(item, index) in apiData" :key="index">
+            <v-col cols="12">
+              <v-card width="600" class="product-card">
+                <v-row align="center" justify="center">
+                  <v-col cols="4" class="d-flex align-center justify-center">
+                    <v-img width="300" :src="item.urlImg"></v-img>
+                  </v-col>
+                  <v-col cols="8" class="d-flex flex-column">
+                    <v-card-title align="left" primary-title>
+                      {{ item.productName }}
+                      <v-card-subtitle>
+                        <b>รายละเอียด: </b>
+                        <span v-if="showFullText">{{ item.detail }}</span>
+                        <span v-else>{{
+                          item.detail | truncate(50, "...")
+                        }}</span>
+                        <br />
+                        <b>ประเภท:</b> {{ item.type }} <br />
+                        <b>ราคา:</b> {{ item.price }} $ <br />
+                        <b>คงเหลือ:</b> {{ item.stock }}
+                      </v-card-subtitle>
+                    </v-card-title>
+                    <v-card-actions class="d-flex justify-end">
+                      <v-spacer></v-spacer>
+                      <v-btn class="btn info" @click="EditProduct(item)"
+                        >แก้ไข</v-btn
+                      >
+                      <v-btn class="btn error" @click="deleteProducts(item)">
+                        <v-icon right>mdi-delete</v-icon>ลบสินค้า
+                      </v-btn>
+                    </v-card-actions>
+                  </v-col>
+                </v-row>
+              </v-card>
+            </v-col>
+          </div>
+        </v-row>
+      </template>
+      <!--  -->
       <br /><br />
       <v-dialog v-model="dialogEdit" max-width="750">
         <v-card>
@@ -106,29 +146,49 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="error" class="btn" @click="closeAddProduct()">ยกเลิก</v-btn>
-            <v-btn color="primary" class="btn" @click="saveDataProducts(postdata)"
+            <v-btn color="error" class="btn" @click="closeAddProduct()"
+              >ยกเลิก</v-btn
+            >
+            <v-btn
+              color="primary"
+              class="btn"
+              @click="saveDataProducts(postdata)"
               >บันทึก</v-btn
             >
           </v-card-actions>
         </v-card>
       </v-dialog>
     </div>
+    <template>
+      <div justify="center" align="center" class="footer">
+        <!-- <Footer /> -->
+        <!-- คร้านทำละ -->
+      </div>
+    </template>
   </div>
 </template>
 
 <script>
-// import Header from "../components/Header.vue";
-// import Navbar from "../components/Navbar";
+// import Footer from "../components/Footer";
+
 export default {
-  components: {
-    // Header,
-  },
+  components: {},
   data() {
     return {
       dialogEdit: false,
       apiData: [],
       id: "",
+      showFullText: false,
+      tableView: false,
+      tableHeaders: [
+        { text: "ชื่อสินค้า", value: "productName" },
+        { text: "รายละเอียด", value: "detail" },
+        { text: "ประเภท", value: "type" },
+        { text: "ราคา", value: "price" },
+        { text: "คงเหลือ", value: "stock" },
+        { text: "จัดการ", value: "actions", sortable: false },
+      ],
+
       postdata: {
         productName: "",
         type: "",
@@ -152,11 +212,25 @@ export default {
     savemode() {
       return this.id == "" ? "เพิ่มสินค้า" : "แก้ไขสินค้า";
     },
+    DetailProduct() {
+      const maxLength = 50;
+      const detail = this.item.detail;
+      if (detail.length <= maxLength) {
+        return detail;
+      }
+      return detail.slice(0, maxLength) + "...";
+    },
   },
   created() {
     this.getData();
   },
   methods: {
+    toggleView() {
+      this.tableView = !this.tableView; // เมื่อกดปุ่ม เปลี่ยนค่า tableView ระหว่าง true กับ false
+    },
+    toggleShowFullText() {
+      this.showFullText = !this.showFullText;
+    },
     newProduct() {
       this.id = "";
       this.postdata = { ...this.postdefault };
@@ -187,7 +261,7 @@ export default {
         })
         .catch(() => {
           // console.error("Error fetching data:", error);
-           this.$swal.fire({
+          this.$swal.fire({
             icon: "error",
             title: "Error",
             text: "Server ยังไม่เปิดใช้งานไม่สามารถเข้าถึงข้อมูลได้",
@@ -284,7 +358,6 @@ export default {
 </script>
 
 <style>
-
 .container {
   max-width: 1500px;
   margin: 20px;
@@ -293,6 +366,13 @@ export default {
   font-family: Arial, sans-serif;
   background-color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+.footer {
+  width: 100%;
+  max-width: 100%;
+  text-align: center;
+  font-family: Arial, sans-serif;
   border-radius: 8px;
 }
 .product-list {

@@ -81,12 +81,7 @@ export default {
 </script>
 
 <style>
-:root {
-  --bs-body-bg: #f8f9fa;
-  --bs-body-bg-rgb: 248, 249, 250;
-  --bs-primary: #4680ff;
-  --pc-header-background: rgba(var(--bs-body-bg-rgb), 0.7);
-}
+
 .v-toolbar__title {
   font-size: 1rem !important;
 }

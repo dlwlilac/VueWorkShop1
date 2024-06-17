@@ -14,7 +14,7 @@ const routes = [
   {
     path: "/",
     name: "toolbar",
-    component: () => import("../components/Navbar.vue"),
+    component: () => import("../layouts/Navbar.vue"),
     children: [
       {
         path: "/profile",

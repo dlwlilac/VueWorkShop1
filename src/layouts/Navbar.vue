@@ -10,7 +10,7 @@
       </v-badge> -->
 
       <v-toolbar-title class="ml-4">
-        <span class="green--text">YAHHHH</span>
+        <span class="green--text">TEST</span>
         <strong style="margin-left: 5px">SHOP</strong>
       </v-toolbar-title>
 
@@ -33,7 +33,7 @@
           >ผู้ใช้งาน</strong
         ></span>
 
-      <v-avatar size="50" class="ml-2" @click="menu = !menu">
+      <v-avatar size="50" class="ml-2">
         <v-img
           src="https://images.contentstack.io/v3/assets/blt5bbf09732528de36/blte2865cc2e9cd1407/63177fbd454b1c2ebb3f3589/2022_Promo_Elementalist-Lux_Ecomm_image10.png?auto=webp&width=694&quality=85"
         ></v-img>

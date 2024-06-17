@@ -161,15 +161,14 @@
     </div>
     <template>
       <div justify="center" align="center" class="footer">
-        <!-- <Footer /> -->
-        <!-- คร้านทำละ -->
+        <!-- <Navbar /> -->
       </div>
     </template>
   </div>
 </template>
 
 <script>
-// import Footer from "../components/Footer";
+// import Navbar from "../components/Navbar.vue";
 
 export default {
   components: {},

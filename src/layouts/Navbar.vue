@@ -38,9 +38,6 @@
           src="https://images.contentstack.io/v3/assets/blt5bbf09732528de36/blte2865cc2e9cd1407/63177fbd454b1c2ebb3f3589/2022_Promo_Elementalist-Lux_Ecomm_image10.png?auto=webp&width=694&quality=85"
         ></v-img>
       </v-avatar>
-      <!-- <v-btn icon dark class="">
-        <v-icon color="#878A94">mdi-menu-down</v-icon>
-      </v-btn> -->
     </v-app-bar>
     <v-main>
       <router-view />

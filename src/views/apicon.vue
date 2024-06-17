@@ -6,9 +6,9 @@
         <v-btn class="btn" @click="toggleView">{{
           tableView ? "Table" : "Card"
         }}</v-btn>
-        <v-btn class="btn info ml-3" @click="toggleShowFullText">
+        <!-- <v-btn class="btn info ml-3" @click="toggleShowFullText">
           {{ showFullText ? "ยกเลิก" : "All Detail" }}
-        </v-btn>
+        </v-btn> -->
         <v-btn class="btn ml-3 success" @click="newProduct()"
           >เพิ่มสินค้า</v-btn
         >
@@ -53,10 +53,11 @@
                       {{ item.productName }}
                       <v-card-subtitle>
                         <b>รายละเอียด: </b>
-                        <span v-if="showFullText">{{ item.detail }}</span>
+                        <!-- <span v-if="showFullText">{{ item.detail }}</span>
                         <span v-else>{{
                           item.detail | truncate(50, "...")
-                        }}</span>
+                        }}</span> -->
+                        <span> {{item.detail | truncate(50, "...")}} </span>
                         <br />
                         <b>ประเภท:</b> {{ item.type }} <br />
                         <b>ราคา:</b> {{ item.price }} $ <br />
@@ -96,13 +97,14 @@
                 ></v-text-field>
               </v-col>
               <v-col cols="6">
-                <v-text-field
+                <v-select
                   name="type"
                   label="ประเภท"
                   id="type"
                   outlined
                   v-model="postdata.type"
-                ></v-text-field>
+                  :items="typeOptions"
+                ></v-select>
               </v-col>
               <v-col cols="12">
                 <v-textarea
@@ -161,15 +163,13 @@
     </div>
     <template>
       <div justify="center" align="center" class="footer">
-        <!-- <Navbar /> -->
+        <!-- ยังไม่ทำ -->
       </div>
     </template>
   </div>
 </template>
 
 <script>
-// import Navbar from "../components/Navbar.vue";
-
 export default {
   components: {},
   data() {
@@ -196,6 +196,7 @@ export default {
         detail: "",
         urlImg: "",
       },
+      typeOptions: ["Special Edition", "LIMITED EDITION", "Figure in Series 4"],
       postdefault: {
         // ล้างข้อมูล
         productName: "",
@@ -227,9 +228,9 @@ export default {
     toggleView() {
       this.tableView = !this.tableView; // เมื่อกดปุ่ม เปลี่ยนค่า tableView ระหว่าง true กับ false
     },
-    toggleShowFullText() {
-      this.showFullText = !this.showFullText;
-    },
+    // toggleShowFullText() {
+    //   this.showFullText = !this.showFullText;
+    // },
     newProduct() {
       this.id = "";
       this.postdata = { ...this.postdefault };
@@ -367,18 +368,7 @@ export default {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
-.footer {
-  width: 100%;
-  max-width: 100%;
-  text-align: center;
-  font-family: Arial, sans-serif;
-  border-radius: 8px;
-}
-.product-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
+
 .title-text {
   padding: 20px 20px 20px 20px;
 }

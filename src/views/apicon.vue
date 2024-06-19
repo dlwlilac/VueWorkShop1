@@ -26,7 +26,8 @@
             <td>{{ props.item.type }}</td>
             <td>{{ props.item.price }}</td>
             <td>{{ props.item.stock }}</td>
-            <td>
+            <!-- ปุ่มไม่ยอมแสดงเศร้าเลย -->
+            <td> 
               <v-icon class="me-2" size="small" @click="editItem(props.item)">
                 mdi-pencil
               </v-icon>
@@ -177,7 +178,7 @@ export default {
       dialogEdit: false,
       apiData: [],
       id: "",
-      showFullText: false,
+      // showFullText: false,
       tableView: false,
       tableHeaders: [
         { text: "ชื่อสินค้า", value: "productName" },
@@ -366,7 +367,7 @@ export default {
   font-family: Arial, sans-serif;
   background-color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  border-radius: 50px;
 }
 
 .title-text {
@@ -375,13 +376,13 @@ export default {
 .product-card {
   background-color: #ffffff;
   border: 1px solid #ddd;
-  border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin: 20px;
   padding: 20px;
   width: calc(33.333% - 40px);
   box-sizing: border-box;
   transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 20px;
 }
 .product-card:hover {
   transform: translateY(-5px);

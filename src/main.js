@@ -14,6 +14,7 @@ Vue.use(VueAxios, axios)
 
 Vue.config.productionTip = false
 
+
 // ตัดข้อความที่ยาว ๆ ให้เหลือตามที่กำหนด
 var filter = function(text, length, clamp){
   clamp = clamp || '...';

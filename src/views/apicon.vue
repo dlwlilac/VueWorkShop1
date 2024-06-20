@@ -2,6 +2,9 @@
   <div class="backgroundImage">
     <div justify="center" align="center" class="container">
       <h1 class="title-text">จัดการสินค้า</h1>
+      <div class="d-flex ml-10">
+        <v-btn class="btnNavbar" style="margin-left: 8px; margin-right: 8px" color="primary" @click="reloadPage">กลับหน้าแรก</v-btn>
+      </div>
       <div class="d-flex justify-end mr-10">
         <v-btn class="btn" @click="toggleView">{{
           tableView ? "Table" : "Card"
@@ -226,6 +229,11 @@ export default {
     this.getData();
   },
   methods: {
+    reloadPage() {
+      this.$router.push('/').then(() => {
+        window.location.reload();
+      });
+    },
     toggleView() {
       this.tableView = !this.tableView; // เมื่อกดปุ่ม เปลี่ยนค่า tableView ระหว่าง true กับ false
     },

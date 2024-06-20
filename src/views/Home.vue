@@ -5,16 +5,21 @@
       <v-row>
         <v-col cols="12">
           <v-card class="mx-auto rounded-xl" flat>
-            <v-img class="image" src="img/BG.png"  max-height="720px" max-width="100%" >
+            <v-img
+              class="image"
+              src="img/BG.png"
+              max-height="720px"
+              max-width="100%"
+            >
               <v-card-title class="top ml-10">
-                <h1 class="white--text title1">STORE </h1>
+                <strong class="TitleShop">STORE </strong>
               </v-card-title>
               <v-card-title class="ml-10 mt-n8">
-                <h2 class="white--text title2">เทส</h2>
+                <h2 class="TitleShop2">เทส</h2>
               </v-card-title>
-              <v-card-text class="ml-10">
+              <!-- <v-card-text class="ml-10">
                 <h3 class="green--text">#เทส</h3>
-              </v-card-text>
+              </v-card-text> -->
               <!--  -->
             </v-img>
           </v-card>
@@ -86,9 +91,17 @@ export default {
 </script>
 
 <style>
-.marginLeft {
-  margin-left: -90px;
+.TitleShop {
+  margin-top: 120px;
+  font-size: 100px;
+  /* margin-left: 50px; */
+  color: white;
 }
+.TitleShop2 {
+    font-size: 40px;
+    margin-top: 40px;
+    color: white;
+  }
 
 .v-card.borderme {
   border: 2px solid green !important;
@@ -103,12 +116,6 @@ export default {
   border: 2px solid black !important;
 }
 @media only screen and (max-width: 600px) {
-  h2.title1 {
-    font-size: 15px;
-  }
-  h2.title2 {
-    font-size: 15px;
-  }
   .top {
     margin-top: 20px;
   }

@@ -2,7 +2,7 @@
   <div>
     <v-app-bar app flat color="white">
       <v-badge color="#D5F0DB" dot>
-        <v-img
+        <v-img @click="BackHome()"
           src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/9eb028de391e65072d06e77f06d0955f66b9fa2c-736x316.png?auto=format&fit=fill&q=80&w=300"
           contain
           width="100"
@@ -33,7 +33,7 @@
           >ผู้ใช้งาน</strong
         ></span
       >
-      <v-avatar size="50" class="ml-2">
+      <v-avatar size="50" class="ml-2" @click="ManageProduct()">
         <v-img
           src="https://images.contentstack.io/v3/assets/blt5bbf09732528de36/blte2865cc2e9cd1407/63177fbd454b1c2ebb3f3589/2022_Promo_Elementalist-Lux_Ecomm_image10.png?auto=webp&width=694&quality=85"
         ></v-img>
@@ -56,6 +56,16 @@ export default {
     this.Username = localStorage.getItem("user");
   },
   methods: {
+    ManageProduct() {
+      if (this.$route.path !== '/apicon' ) {
+      this.$router.push("/apicon");
+      }
+    },
+    BackHome() {
+      if (this.$route.path !== '/' ) {
+      this.$router.push("/");
+      }
+    },
     SoonCart() {
       this.$swal.fire({
         icon: "info",

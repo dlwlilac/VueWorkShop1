@@ -33,4 +33,8 @@ export default {
   background-position: center;
   flex-direction: column;
 }
+
+.textDetails {
+   font-size: 6px;
+}
 </style>

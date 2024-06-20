@@ -1,18 +1,18 @@
 <template>
   <div>
     <v-app-bar app flat color="white">
-      <!-- <v-badge color="#D5F0DB" dot>
+      <v-badge color="#D5F0DB" dot>
         <v-img
           src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/9eb028de391e65072d06e77f06d0955f66b9fa2c-736x316.png?auto=format&fit=fill&q=80&w=300"
           contain
           width="100"
         ></v-img>
-      </v-badge> -->
+      </v-badge>
 
-      <v-toolbar-title class="ml-4">
+      <!-- <v-toolbar-title class="ml-4">
         <span class="green--text">TEST</span>
         <strong style="margin-left: 5px">SHOP</strong>
-      </v-toolbar-title>
+      </v-toolbar-title> -->
 
       <v-spacer></v-spacer>
       <v-badge color="#FF6D59" overlap content="2" class="mr-2 mt-1">
@@ -31,8 +31,8 @@
         >สวัสดีคุณ,
         <strong style="margin-left: 5px; margin-right: 5px"
           >ผู้ใช้งาน</strong
-        ></span>
-
+        ></span
+      >
       <v-avatar size="50" class="ml-2">
         <v-img
           src="https://images.contentstack.io/v3/assets/blt5bbf09732528de36/blte2865cc2e9cd1407/63177fbd454b1c2ebb3f3589/2022_Promo_Elementalist-Lux_Ecomm_image10.png?auto=webp&width=694&quality=85"
@@ -81,7 +81,6 @@ export default {
 </script>
 
 <style>
-
 .v-toolbar__title {
   font-size: 1rem !important;
 }

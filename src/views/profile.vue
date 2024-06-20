@@ -1,13 +1,13 @@
 <template>
   <v-container class="pt-8">
     <v-card class="card-body mx-auto pt-4" max-width="600">
-      <!-- <v-row justify="center" align="center">
+      <v-row justify="center" align="center">
         <v-avatar size="150">
           <v-img :src="user.avatar"></v-img>
         </v-avatar>
-      </v-row> -->
+      </v-row>
 
-      <cardImg />
+      <!-- <cardImg /> -->
 
       <v-divider></v-divider>
 
@@ -99,10 +99,10 @@
 </template>
 
 <script>
-import cardImg from "../components/ImageCard.vue";
+// import cardImg from "../components/ImageCard.vue";
 export default {
   components: {
-    cardImg,
+    // cardImg,
   },
   data() {
     return {
@@ -115,7 +115,7 @@ export default {
         team:"T1",
         university: "มหาวิทยาลัยสงขลานครินทร์ คณะวิทยาศาสตร์ สาขาเทคโนโลยีสารสนเทศ (ต่อเนื่อง)",
         avatar:
-          "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Teemo_0.jpg",
+          "img/Profile.jpg",
       },
     };
   },

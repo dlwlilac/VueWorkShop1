@@ -5,6 +5,18 @@
 }
 
 .backgroundImage {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  min-height: 100vh;
+  background-image: url("./img-headerbg.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  flex-direction: column;
+}
+
+.backgroundImage1 {
   display: flex;
   justify-content: center;
   align-items: center;

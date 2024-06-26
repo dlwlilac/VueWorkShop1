@@ -11,12 +11,12 @@
               max-height="720px"
               max-width="100%"
             >
-              <v-card-title class="top ml-10">
-                <strong class="TitleShop">Shop..... </strong>
+              <!-- <v-card-title class="top ml-10">
+                <strong class="TitleShop">ไก่ชนนาทาน </strong>
               </v-card-title>
               <v-card-title class="ml-10 mt-n8">
                 <h2 class="TitleShop2">Store</h2>
-              </v-card-title>
+              </v-card-title> -->
               <!-- <v-card-text class="ml-10">
                 <h3 class="green--text">#เทส</h3>
               </v-card-text> -->
@@ -56,16 +56,30 @@
             :selectedCategory="selectedCategory"
             :key="selectedCategory"
           />
-          
+
           <!-- <v-card flat color="#1007C2" class="rounded-xl mt-8">
             <v-toolbar flat color="transparent" class="mb-4">
               <v-spacer></v-spacer>
             </v-toolbar>
           </v-card> -->
-
         </v-col>
       </v-row>
     </v-container>
+    <div class="fab-container">
+      <v-badge color="#41AB55" overlap content="9+" class="mr-2 mt-1">
+        <v-btn small fab dark color="#ECF7EE" @click="Soon()">
+          <v-icon small class="btnNavbar" color="#41AB55">mdi-cart</v-icon>
+        </v-btn>
+      </v-badge>
+      <v-badge color="#FF6D59" overlap content="9+" class="mr-2 mt-1">
+        <v-btn small fab dark color="#FFF0EE" @click="Soon()">
+          <v-icon small class="btnNavbar" color="#FF6D59">mdi-heart</v-icon>
+        </v-btn>
+      </v-badge>
+      <v-btn small fab dark color="primary" @click="scrollToTop">
+        <v-icon small class="btnNavbar">mdi-arrow-up</v-icon>
+      </v-btn>
+    </div>
   </v-app>
 </template>
 
@@ -80,6 +94,7 @@ export default {
   data() {
     return {
       selectedCategory: "Figure",
+      // showScrollToTop: false
     };
   },
   components: {
@@ -103,11 +118,27 @@ export default {
       console.log("Parent received category:", title); // เพิ่ม log นี้
       this.selectedCategory = title;
     },
+    scrollToTop() {
+      // Scroll to the top of the page
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    },
   },
 };
 </script>
 
 <style>
+.fab-container {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.v-btn {
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+}
 
 .rounded-circle {
   border-radius: 50%;
@@ -139,6 +170,18 @@ export default {
 }
 
 .top {
+  margin-top: 20px;
+}
+
+.TitleShop {
+  font-size: 60px;
+  color: white;
+  margin-top: 40px;
+}
+
+.TitleShop2 {
+  font-size: 30px;
+  color: white;
   margin-top: 20px;
 }
 

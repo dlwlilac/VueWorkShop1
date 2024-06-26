@@ -58,7 +58,7 @@ export default {
       { img: "img/Figure.png", title: "Figure" },
       { img: "img/Statues.png", title: "Statues" },
       { img: "img/Plush.png", title: "Plush" },
-      { img: "img/Pin.png", title: "Pin" },
+      // { img: "img/Pin.png", title: "Pin" },
       
     ],
   }),

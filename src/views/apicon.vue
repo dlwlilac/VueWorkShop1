@@ -1,5 +1,5 @@
 <template>
-  <div class="backgroundImage">
+  <div class="backgroundImage1">
     <div justify="center" align="center" class="container">
       <h1 class="title-text">จัดการสินค้า</h1>
       <div class="d-flex ml-10">

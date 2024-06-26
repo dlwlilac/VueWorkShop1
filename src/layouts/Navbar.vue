@@ -2,7 +2,7 @@
   <div>
     <v-app-bar app flat color="white">
       <v-badge color="#D5F0DB" dot>
-        <v-img 
+        <v-img
           src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/9eb028de391e65072d06e77f06d0955f66b9fa2c-736x316.png?auto=format&fit=fill&q=80&w=300"
           contain
           width="100"
@@ -33,12 +33,15 @@
           >ผู้ใช้งาน</strong
         ></span
       > -->
-      <v-btn class="btnNavbar" style="margin-left: 8px; margin-right: 8px" color="primary" to="/apicon">จัดการสินค้า</v-btn>
-      <!-- <v-avatar size="50" class="ml-2" >
+      <v-chip class="btnNavbar"
+        style="margin-left: 8px; margin-right: 8px"
+        color="primary"
+        to="/apicon">เข้าสู่ระบบ</v-chip>
+      <v-avatar size="50" class="ml-2" >
         <v-img
           src="https://images.contentstack.io/v3/assets/blt5bbf09732528de36/blte2865cc2e9cd1407/63177fbd454b1c2ebb3f3589/2022_Promo_Elementalist-Lux_Ecomm_image10.png?auto=webp&width=694&quality=85"
         ></v-img>
-      </v-avatar> -->
+      </v-avatar>
     </v-app-bar>
     <v-main>
       <router-view />
@@ -47,6 +50,7 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
@@ -92,15 +96,4 @@ export default {
 </script>
 
 <style>
-.v-toolbar__title {
-  font-size: 1rem !important;
-}
-.btnNavbar {
-  cursor: pointer;
-  border: none;
-}
-.btnNavbar:hover {
-  transform: translateY(-5px);
-}
-
 </style>

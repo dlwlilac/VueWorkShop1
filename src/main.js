@@ -7,6 +7,7 @@ import vuetify from './plugins/vuetify'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import Swal from "sweetalert2";
+import './assets/style.css'
 
 Vue.prototype.$swal = Swal
 

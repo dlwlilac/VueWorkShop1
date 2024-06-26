@@ -1,7 +1,7 @@
 <template>
-  <v-app >
+  <v-app>
     <Navbar />
-    <v-container fluid class="backgroundImage">
+    <v-container fluid class="backgroundImage main-container">
       <v-row>
         <v-col cols="12">
           <v-card class="mx-auto rounded-xl" flat>
@@ -26,17 +26,17 @@
           <v-toolbar flat color="transparent">
             <v-toolbar-title><h3>หมวดหมู่</h3></v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-btn-toggle v-model="toggle_exclusive" group color="#1007C2">
-              <v-btn>
+            <!-- <v-btn-toggle v-model="toggle_exclusive" group color="#1007C2">
+              <v-btn class="rounded-circle" width="50" height="50">
                 <v-icon>mdi-chevron-left</v-icon>
               </v-btn>
-              <v-btn>
+              <v-btn class="rounded-circle" width="50" height="50">
                 <v-icon>mdi-chevron-right</v-icon>
               </v-btn>
-            </v-btn-toggle>
+            </v-btn-toggle> -->
           </v-toolbar>
 
-          <Category />
+          <Category @category-selected="handleCategorySelected" />
 
           <v-toolbar flat color="transparent" class="mt-5">
             <v-toolbar-title
@@ -52,28 +52,41 @@
               >ดูทั้งหมด</v-btn
             >
           </v-toolbar>
-          <Product />
-          <v-card flat color="#1007C2" class="rounded-xl mt-8">
+          <Product
+            :selectedCategory="selectedCategory"
+            :key="selectedCategory"
+          />
+          
+          <!-- <v-card flat color="#1007C2" class="rounded-xl mt-8">
             <v-toolbar flat color="transparent" class="mb-4">
               <v-spacer></v-spacer>
             </v-toolbar>
-          </v-card>
+          </v-card> -->
+
         </v-col>
       </v-row>
     </v-container>
   </v-app>
 </template>
 
-<script>
+<script >
 import Navbar from "../layouts/Navbar";
 import Category from "../components/Category.vue";
 import Product from "../components/Product.vue";
+// import { IconHome } from '@tabler/icons-vue';
 
 export default {
+  name: "Home",
+  data() {
+    return {
+      selectedCategory: "Figure",
+    };
+  },
   components: {
     Navbar,
     Category,
     Product,
+    // IconHome,
   },
   methods: {
     Soon() {
@@ -86,46 +99,99 @@ export default {
         timerProgressBar: true,
       });
     },
+    handleCategorySelected(title) {
+      console.log("Parent received category:", title); // เพิ่ม log นี้
+      this.selectedCategory = title;
+    },
   },
 };
 </script>
 
 <style>
-.TitleShop {
-  margin-top: 120px;
-  font-size: 100px;
-  /* margin-left: 50px; */
-  color: white;
+
+.rounded-circle {
+  border-radius: 50%;
 }
-.TitleShop2 {
-    font-size: 40px;
-    margin-top: 40px;
-    color: white;
-  }
+.main-container {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+}
+
+.mt-auto {
+  margin-top: auto;
+}
 
 .v-card.borderme {
-  border: 2px solid green !important;
+  border: 2px solid rgb(38, 0, 128) !important;
 }
+
 .v-card.borderout {
-  border: 1px solid #d5f0db !important;
+  border: 1px solid #d8d5f0 !important;
 }
+
 .v-btn:not(.v-btn--round).v-size--default.add {
   min-width: 0px !important;
 }
+
 .theme--light.v-sheet--outlined.mobile {
   border: 2px solid black !important;
 }
-@media only screen and (max-width: 600px) {
-  .top {
+
+.top {
+  margin-top: 20px;
+}
+
+/* Responsive styles */
+@media only screen and (min-width: 600px) {
+  .TitleShop {
+    font-size: 60px;
+    color: white;
+    margin-top: 40px;
+  }
+
+  .TitleShop2 {
+    font-size: 30px;
+    color: white;
     margin-top: 20px;
   }
-}
-@media only screen and (min-width: 600px) {
+
   .top {
-    margin-top: 70px;
+    margin-top: 50px;
   }
 }
+
+@media only screen and (min-width: 600px) {
+  .TitleShop {
+    font-size: 80px;
+    color: white;
+    margin-top: 80px;
+  }
+
+  .TitleShop2 {
+    font-size: 36px;
+    color: white;
+    margin-top: 30px;
+  }
+
+  .top {
+    margin-top: 80px;
+  }
+}
+
 @media only screen and (min-width: 768px) {
+  .TitleShop {
+    font-size: 100px;
+    color: white;
+    margin-top: 120px;
+  }
+
+  .TitleShop2 {
+    font-size: 40px;
+    color: white;
+    margin-top: 40px;
+  }
+
   .top {
     margin-top: 120px;
   }

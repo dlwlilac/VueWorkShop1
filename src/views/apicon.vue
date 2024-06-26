@@ -272,8 +272,8 @@ export default {
           // console.error("Error fetching data:", error);
           this.$swal.fire({
             icon: "error",
-            title: "Error",
-            text: "Server ยังไม่เปิดใช้งานไม่สามารถเข้าถึงข้อมูลได้",
+            title: "Server Error",
+            text: "ไม่สามารถเข้าถึงข้อมูลได้",
           });
         });
     },
